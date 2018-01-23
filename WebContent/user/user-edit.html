@@ -1,0 +1,108 @@
+<div class="row-fluid">
+	<div class="span12">
+		<div ng-show="id == 0">
+			<h4>Add User</h4>
+		</div>
+		<div ng-hide="id == 0">
+			<h4>Edit User</h4>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<form class="form-horizontal" name="userForm" novalidate>
+			<div class="control-group">
+				<label class="control-label">First Name</label>
+				<div class="controls">
+					<input type="text" name="firstName" ng-model="user.firstName" required ng-maxlength="50">
+					<span ng-messages="userForm.firstName.$error"> 
+						<small ng-message="required" class="help-block">First name is required.</small> 
+						<small ng-message="maxlength" class="help-block">First name can't exceeds 50 characters.</small>
+					</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Last Name</label>
+				<div class="controls">
+					<input type="text" name="lastName" ng-model="user.lastName">
+				</div>
+			</div>
+ 			<div class="control-group">
+				<label class="control-label">Use Name</label>
+				<div class="controls">
+					<input type="text" name="userName" ng-model="user.userName" ng-minlength="3" ng-maxlength="50">
+					<span ng-messages="userForm.userName.$error">
+					      
+					      <small ng-message="minlength" class="help-block">User name should be minimum 3 characters.</small>
+					      <small ng-message="maxlength" class="help-block">User name can't exceeds 50 characters.</small>
+					  </span>	
+				</div>
+			</div> 
+			<div class="control-group">
+				<label class="control-label">Password</label>
+				<div class="controls">
+					<input type="password" name="password" ng-model="user.password" required>
+					<span ng-messages="userForm.password.$error"> 
+						<small ng-message="required" class="help-block">Password is required.</small> 
+					</span>					
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Confirm Password</label>
+				<div class="controls">
+					<input type="password" name="confirmPassword"
+						ng-model="confirmPassword">
+					<span ng-show="confirmPassword != user.password">
+						<small class="help-block">Password And Confirm password should be same.</small> 
+					</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Gender</label>
+				<div class="controls">
+					<select class="input-medium" name="gender" ui-select2
+						ng-model="user.gender" required>
+						<option value="">- Select -</option>
+						<option value="M">Male</option>
+						<option value="F">Female</option>
+						<option value="O">Others</option>
+					</select>
+					<span ng-messages="userForm.gender.$error"> 
+						<small ng-message="required" class="help-block">Gender is required.</small> 
+					</span>					
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Phone Number</label>
+				<div class="controls">
+					<input type="text" name="mobile" ng-model="user.mobile" required>
+					<span ng-messages="userForm.mobile.$error">
+						<small ng-message="required" class="help-block">Phone is required.</small> 
+					</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Email Address</label>
+				<div class="controls">
+					<input type="email" name="emailId" ng-model="user.emailId" required>
+					<span ng-messages="userForm.emailId.$error">
+						<small ng-message="required" class="help-block">Email Address is required.</small> 
+					</span>					
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<span class="checkbox"> <input type="checkbox"
+						name="isEnabled" ng-model="user.isEnabled"> Is Enabled
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span9 text-center">
+		<span class="btn btn-primary " ng-click="save()">Save</span> <span
+			class="btn" ng-click="cancel()">Cancel</span>
+	</div>
+</div>
